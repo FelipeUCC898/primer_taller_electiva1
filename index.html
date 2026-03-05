@@ -69,10 +69,52 @@
 
     <!-- Placeholder buscador — Dev 2 reemplaza esto (feature/product-search) -->
     <section id="buscador">
-      <div class="section-placeholder">
-        🔍 <strong>Sección Buscador</strong> — Dev 2 (feature/product-search)
+  <div class="search-hero">
+    <div class="search-hero__inner">
+
+      <p class="search-hero__eyebrow">¡Todo lo que necesitas, aquí!</p>
+      <h1 class="search-hero__title">¿Qué estás buscando hoy?</h1>
+
+      <!-- Barra de búsqueda -->
+      <form class="search-bar" id="search-form" onsubmit="handleSearchForm(event)">
+        <div class="search-bar__wrap">
+          <span class="search-bar__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input
+            id="search-input"
+            class="search-bar__input"
+            type="text"
+            placeholder="Buscar productos, marcas y más…"
+            autocomplete="off"
+            oninput="handleSuggestions(this.value)"
+          />
+          <button class="search-bar__btn" type="submit">Buscar</button>
+        </div>
+
+        <!-- Lista de sugerencias dinámicas -->
+        <ul class="search-suggestions" id="suggestions" role="listbox" aria-label="Sugerencias"></ul>
+      </form>
+
+      <!-- Categorías rápidas -->
+      <div class="quick-cats">
+        <button class="quick-cat" onclick="fillSearch('Celulares')">📱 Celulares</button>
+        <button class="quick-cat" onclick="fillSearch('Laptops')">💻 Laptops</button>
+        <button class="quick-cat" onclick="fillSearch('Ropa')">👗 Ropa</button>
+        <button class="quick-cat" onclick="fillSearch('Zapatillas')">👟 Zapatillas</button>
+        <button class="quick-cat" onclick="fillSearch('Televisores')">📺 Televisores</button>
+        <button class="quick-cat" onclick="fillSearch('Gaming')">🎮 Gaming</button>
       </div>
-    </section>
+
+    </div>
+  </div>
+
+  <!-- Feedback de búsqueda -->
+  <div class="search-result" id="search-result" style="display: none;"></div>
+</section>
 
     <!-- Placeholder productos — Dev 3 reemplaza esto (feature/product-list) -->
     <section id="productos">
