@@ -75,11 +75,165 @@
     </section>
 
     <!-- Placeholder productos — Dev 3 reemplaza esto (feature/product-list) -->
-    <section id="productos">
-      <div class="section-placeholder">
-        🛍️ <strong>Productos Destacados</strong> — Dev 3 (feature/product-list)
+<!-- ============================
+     SECCIÓN PRODUCTOS — Dev 3
+     Rama: feature/product-list
+
+     INSTRUCCIÓN: Reemplaza el bloque
+     <section id="productos">...</section>
+     en index.html con este contenido.
+     ============================ -->
+
+<section id="productos">
+
+  <div class="products-header">
+    <h2 class="section-title">Productos Destacados</h2>
+
+    <!-- Filtros por categoría -->
+    <div class="products-filters">
+      <button class="filter-btn active" onclick="filterProducts('todos', this)">Todos</button>
+      <button class="filter-btn" onclick="filterProducts('electronica', this)">Electrónica</button>
+      <button class="filter-btn" onclick="filterProducts('ropa', this)">Ropa</button>
+      <button class="filter-btn" onclick="filterProducts('hogar', this)">Hogar</button>
+      <button class="filter-btn" onclick="filterProducts('gaming', this)">Gaming</button>
+    </div>
+  </div>
+
+  <!-- Grid de tarjetas de productos -->
+  <div class="products-grid" id="products-grid">
+
+    <!-- Producto 1 -->
+    <article class="product-card" data-cat="electronica" style="animation-delay: .05s">
+      <div class="product-card__badge">OFERTA</div>
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">📱</span>
       </div>
-    </section>
+      <div class="product-card__body">
+        <p class="product-card__category">Electrónica</p>
+        <h3 class="product-card__name">Smartphone Pro Max 256GB</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(1.2k)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-old">$2.800.000</span>
+          <span class="price-new">$2.199.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis</p>
+        <button class="btn-add" onclick="addToCart(this, 'Smartphone Pro Max')">Agregar al carrito</button>
+      </div>
+    </article>
+
+    <!-- Producto 2 -->
+    <article class="product-card" data-cat="gaming" style="animation-delay: .1s">
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">🎮</span>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__category">Gaming</p>
+        <h3 class="product-card__name">Consola Next-Gen 1TB</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-count">(856)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-new">$3.499.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis</p>
+        <button class="btn-add" onclick="addToCart(this, 'Consola Next-Gen')">Agregar al carrito</button>
+      </div>
+    </article>
+
+    <!-- Producto 3 -->
+    <article class="product-card" data-cat="electronica" style="animation-delay: .15s">
+      <div class="product-card__badge product-card__badge--nuevo">NUEVO</div>
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">💻</span>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__category">Electrónica</p>
+        <h3 class="product-card__name">Laptop Ultra Slim 16GB RAM</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(2.1k)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-old">$4.200.000</span>
+          <span class="price-new">$3.790.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis</p>
+        <button class="btn-add" onclick="addToCart(this, 'Laptop Ultra Slim')">Agregar al carrito</button>
+      </div>
+    </article>
+
+    <!-- Producto 4 -->
+    <article class="product-card" data-cat="ropa" style="animation-delay: .2s">
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">👟</span>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__category">Ropa</p>
+        <h3 class="product-card__name">Zapatillas Running Pro</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-count">(498)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-new">$289.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis +$50k</p>
+        <button class="btn-add" onclick="addToCart(this, 'Zapatillas Running Pro')">Agregar al carrito</button>
+      </div>
+    </article>
+
+    <!-- Producto 5 -->
+    <article class="product-card" data-cat="electronica" style="animation-delay: .25s">
+      <div class="product-card__badge">HOT</div>
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">🎧</span>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__category">Electrónica</p>
+        <h3 class="product-card__name">Audífonos Noise Cancelling</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(3.4k)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-old">$850.000</span>
+          <span class="price-new">$649.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis</p>
+        <button class="btn-add" onclick="addToCart(this, 'Audífonos Noise Cancelling')">Agregar al carrito</button>
+      </div>
+    </article>
+
+    <!-- Producto 6 -->
+    <article class="product-card" data-cat="hogar" style="animation-delay: .3s">
+      <div class="product-card__img-wrap">
+        <span class="product-card__emoji">📺</span>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__category">Hogar</p>
+        <h3 class="product-card__name">Smart TV 55" 4K OLED</h3>
+        <div class="product-card__rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(987)</span>
+        </div>
+        <div class="product-card__price-wrap">
+          <span class="price-new">$4.100.000</span>
+        </div>
+        <p class="price-free-ship">🚚 Envío gratis</p>
+        <button class="btn-add" onclick="addToCart(this, 'Smart TV 55')">Agregar al carrito</button>
+      </div>
+    </article>
+
+  </div><!-- /products-grid -->
+
+  <!-- Toast del carrito -->
+  <div class="cart-toast" id="cart-toast"></div>
+
+</section>
 
     <!-- Placeholder servicios — Dev 4 reemplaza esto (feature/ui-styles) -->
     <section id="servicios">
