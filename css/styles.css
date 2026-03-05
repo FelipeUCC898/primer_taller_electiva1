@@ -48,7 +48,8 @@ body {
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ── NAVBAR ── */
+/* ── NAVBAR PRINCIPAL ── */
+/* Header sticky con fondo amarillo característico de MercadoLibre */
 header {
   position: sticky;
   top: 0;
@@ -58,142 +59,276 @@ header {
   animation: slideDown 0.45s ease both;
 }
 
+/* Contenedor principal del navbar - primera fila */
 .navbar {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 64px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
-/* Logo */
-.navbar__logo {
+/* ── SECCIÓN IZQUIERDA: Logo + Ubicación ── */
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   flex-shrink: 0;
+}
+
+/* Logo de MercadoLibre con imagen PNG oficial */
+.navbar__logo {
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.navbar__logo-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--blue);
-  letter-spacing: -1px;
-  box-shadow: 0 2px 8px rgba(52, 131, 250, 0.18);
+.navbar__logo-img {
+  height: 34px;
+  width: auto;
+  display: block;
   transition: transform 0.2s;
 }
 
-.navbar__logo-icon:hover {
-  transform: scale(1.08);
+.navbar__logo-img:hover {
+  transform: scale(1.05);
 }
 
-.navbar__logo-text {
-  font-family: var(--font-head);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text);
-  display: none;
+/* Selector de ubicación para envíos */
+.navbar__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
 }
 
-@media (min-width: 600px) {
-  .navbar__logo-text {
-    display: block;
-  }
+.navbar__location:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
-/* Buscador (placeholder - Dev 2 lo implementa) */
+.navbar__location-icon {
+  width: 14px;
+  height: 18px;
+  color: rgba(0, 0, 0, 0.9);
+  flex-shrink: 0;
+}
+
+.navbar__location-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.navbar__location-label {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: 400;
+}
+
+.navbar__location-value {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+}
+
+/* ── BARRA DE BÚSQUEDA CENTRAL ── */
+/* Barra de búsqueda expandible - Dev 2 implementa la funcionalidad */
 .navbar__search {
   flex: 1;
-  max-width: 640px;
+  max-width: 600px;
   position: relative;
 }
 
 .navbar__search input {
   width: 100%;
-  height: 40px;
+  height: 39px;
   border: none;
-  border-radius: 4px;
-  padding: 0 48px 0 16px;
+  border-radius: 2px;
+  padding: 0 60px 0 15px;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   color: var(--text);
+  background: var(--white);
   outline: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s;
 }
 
-.navbar__search input:focus {
-  box-shadow: 0 2px 10px rgba(52, 131, 250, 0.35);
+.navbar__search input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
 }
 
-.navbar__search button {
+.navbar__search input:focus {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(52, 131, 250, 0.3);
+}
+
+/* Botón de búsqueda con icono de lupa */
+.navbar__search-btn {
   position: absolute;
   right: 0;
   top: 0;
-  width: 44px;
-  height: 40px;
-  background: var(--blue);
+  width: 46px;
+  height: 39px;
+  background: var(--white);
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
+  border-radius: 0 2px 2px 0;
 }
 
-.navbar__search button:hover {
-  background: var(--blue-dk);
+.navbar__search-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.navbar__search button svg {
-  width: 18px;
-  height: 18px;
+.navbar__search-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: rgba(0, 0, 0, 0.45);
 }
 
-/* Links de navegación */
-.navbar__links {
+/* ── SECCIÓN DERECHA: Promoción Disney+ ── */
+/* Banner promocional de Disney+ u otras ofertas */
+.navbar__promo {
+  display: none; /* Oculto en móvil */
+  align-items: center;
+  gap: 8px;
+  max-width: 340px;
+  flex-shrink: 0;
+}
+
+.navbar__promo-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(0, 0, 0, 0.55);
+  flex-shrink: 0;
+}
+
+.navbar__promo-text {
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 1.3;
+}
+
+/* Mostrar promoción en pantallas medianas */
+@media (min-width: 1024px) {
+  .navbar__promo {
+    display: flex;
+  }
+}
+
+/* ── BARRA DE NAVEGACIÓN SECUNDARIA ── */
+/* Segunda fila del navbar con menú de opciones y usuario */
+.navbar__secondary {
+  background: var(--white);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar__secondary-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+/* ── MENÚ DE NAVEGACIÓN ── */
+/* Links principales: Categorías, Ofertas, Cupones, etc. */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navbar__menu::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar__menu-item {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 8px 12px;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.navbar__menu-item:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ── MENÚ DE USUARIO ── */
+/* Links de cuenta, login, compras y carrito */
+.navbar__user {
   display: flex;
   align-items: center;
   gap: 4px;
   margin-left: auto;
 }
 
-.navbar__links a {
+.navbar__user-link {
   text-decoration: none;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background 0.18s, color 0.18s;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 8px 12px;
   white-space: nowrap;
+  border-radius: 4px;
+  transition: background 0.15s;
 }
 
-.navbar__links a:hover {
-  background: rgba(0, 0, 0, 0.07);
+.navbar__user-link:hover {
+  background: rgba(0, 0, 0, 0.06);
 }
 
-.navbar__links .btn-login {
-  background: var(--white);
-  color: var(--blue);
-  border: 2px solid var(--blue);
-  margin-left: 4px;
+/* Icono del carrito de compras */
+.navbar__cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s;
 }
 
-.navbar__links .btn-login:hover {
-  background: var(--blue);
-  color: var(--white);
+.navbar__cart:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.navbar__cart svg {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.9);
+}
+
+/* ── RESPONSIVE: Ocultar elementos en móvil ── */
+@media (max-width: 768px) {
+  .navbar__location {
+    display: none;
+  }
+  
+  .navbar__user-link {
+    display: none;
+  }
+  
+  .navbar__menu-item:nth-child(n+4) {
+    display: none;
+  }
 }
 
 /* ── SUBNAV (categorías) ── */
