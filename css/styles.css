@@ -1,0 +1,620 @@
+/* =============================================
+   styles.css — Dev 1
+   Rama: feature/navbar
+   Responsable: estructura base + navbar
+   ============================================= */
+
+/* ── RESET & VARIABLES ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --yellow:    #FFE600;
+  --yellow-dk: #F5D800;
+  --blue:      #3483FA;
+  --blue-dk:   #2968C8;
+  --text:      #1A1A2E;
+  --gray:      #F5F5F5;
+  --gray-mid:  #EBEBEB;
+  --white:     #FFFFFF;
+  --shadow:    0 2px 12px rgba(0, 0, 0, 0.10);
+  --radius:    10px;
+  --font-head: 'Sora', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--gray);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── ANIMACIONES GLOBALES ── */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── NAVBAR ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--yellow);
+  box-shadow: var(--shadow);
+  animation: slideDown 0.45s ease both;
+}
+
+.navbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo */
+.navbar__logo {
+  flex-shrink: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar__logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--blue);
+  letter-spacing: -1px;
+  box-shadow: 0 2px 8px rgba(52, 131, 250, 0.18);
+  transition: transform 0.2s;
+}
+
+.navbar__logo-icon:hover {
+  transform: scale(1.08);
+}
+
+.navbar__logo-text {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .navbar__logo-text {
+    display: block;
+  }
+}
+
+/* Buscador (placeholder - Dev 2 lo implementa) */
+.navbar__search {
+  flex: 1;
+  max-width: 640px;
+  position: relative;
+}
+
+.navbar__search input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 48px 0 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s;
+}
+
+.navbar__search input:focus {
+  box-shadow: 0 2px 10px rgba(52, 131, 250, 0.35);
+}
+
+.navbar__search button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 40px;
+  background: var(--blue);
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.navbar__search button:hover {
+  background: var(--blue-dk);
+}
+
+.navbar__search button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Links de navegación */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.navbar__links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.navbar__links a:hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.navbar__links .btn-login {
+  background: var(--white);
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  margin-left: 4px;
+}
+
+.navbar__links .btn-login:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* ── SUBNAV (categorías) ── */
+.subnav {
+  background: var(--white);
+  border-bottom: 2px solid var(--gray-mid);
+}
+
+.subnav__list {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  list-style: none;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.subnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.subnav__list li a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #555;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.18s, border-bottom 0.18s;
+}
+
+.subnav__list li a:hover,
+.subnav__list li a.active {
+  color: var(--blue);
+  border-bottom: 3px solid var(--blue);
+}
+
+/* ── LAYOUT PRINCIPAL ── */
+.page-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+section {
+  margin-top: 36px;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--yellow);
+  display: inline-block;
+}
+
+/* Placeholder para secciones de otros devs */
+.section-placeholder {
+  background: var(--white);
+  border: 2px dashed var(--gray-mid);
+  border-radius: var(--radius);
+  padding: 40px;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* ── PORTAFOLIO (estructura base - Dev 1) ── */
+#portafolio-devs {
+  margin-top: 48px;
+}
+
+.portafolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Tarjeta de portafolio */
+.dev-card {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: fadeUp 0.5s ease both;
+}
+
+.dev-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+}
+
+.dev-card__header {
+  background: linear-gradient(135deg, var(--blue) 0%, #1a56d6 100%);
+  padding: 28px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dev-card__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--yellow);
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.dev-card__name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+
+.dev-card__role {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  margin-top: -8px;
+}
+
+.dev-card__body {
+  padding: 20px;
+}
+
+.dev-card__desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.dev-card__services-title,
+.dev-card__tech-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.dev-card__services {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.dev-card__services li {
+  font-size: 0.83rem;
+  color: #444;
+  padding: 3px 0 3px 14px;
+  position: relative;
+}
+
+.dev-card__services li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+.dev-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.tech-tag {
+  background: var(--gray);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--gray-mid);
+}
+
+.dev-card__github {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--text);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+  justify-content: center;
+}
+
+.dev-card__github:hover {
+  background: var(--blue);
+  transform: scale(1.02);
+}
+
+.dev-card__github svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ── FOOTER placeholder (Dev 4 lo completa) ── */
+footer {
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 24px;
+  font-size: 0.82rem;
+  margin-top: 60px;
+}
+
+/* =============================================
+   search.css — Dev 2
+   Rama: feature/product-search
+   Estilos: hero buscador, input, sugerencias
+   y botones de categorías rápidas
+   ============================================= */
+
+/* ── HERO DEL BUSCADOR ── */
+.search-hero {
+  background: linear-gradient(135deg, #FFE600 0%, #FFF9C4 55%, #ffffff 100%);
+  border-radius: 16px;
+  padding: 48px 32px 40px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Círculo decorativo de fondo */
+.search-hero::before {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(52, 131, 250, 0.07);
+  pointer-events: none;
+}
+
+.search-hero__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.search-hero__eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3483FA;
+  margin-bottom: 8px;
+}
+
+.search-hero__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #1A1A2E;
+  margin-bottom: 28px;
+  line-height: 1.15;
+}
+
+/* ── BARRA DE BÚSQUEDA ── */
+.search-bar {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar__wrap {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.search-bar__wrap:focus-within {
+  box-shadow: 0 4px 24px rgba(52, 131, 250, 0.35);
+}
+
+.search-bar__icon {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.search-bar__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.search-bar__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #1A1A2E;
+  padding: 14px 8px;
+  background: transparent;
+}
+
+.search-bar__btn {
+  background: #3483FA;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-bar__btn:hover {
+  background: #2968C8;
+}
+
+/* ── SUGERENCIAS DINÁMICAS ── */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  list-style: none;
+  z-index: 50;
+  overflow: hidden;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.search-suggestions li {
+  padding: 11px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  transition: background 0.15s;
+}
+
+.search-suggestions li:hover {
+  background: #F5F5F5;
+}
+
+.search-suggestions li::before {
+  content: "🔍";
+  font-size: 0.8rem;
+}
+
+/* ── CATEGORÍAS RÁPIDAS ── */
+.quick-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.quick-cat {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(52, 131, 250, 0.25);
+  border-radius: 24px;
+  padding: 7px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #1A1A2E;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+
+.quick-cat:hover {
+  background: #3483FA;
+  color: #ffffff;
+  border-color: #3483FA;
+  transform: translateY(-2px);
+}
+
+/* ── FEEDBACK DE RESULTADO ── */
+.search-result {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-top: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  font-size: 0.95rem;
+  color: #333;
+  animation: fadeUp 0.3s ease;
+}

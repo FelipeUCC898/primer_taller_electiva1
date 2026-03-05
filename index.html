@@ -1,11 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MercadoLibre - Clon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Dev 1 — styles.css (rama: feature/navbar) -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
+
+  <!-- ============================
+       NAVBAR — Dev 1
+       Rama: feature/navbar
+       ============================ -->
+  <header>
+    <nav class="navbar">
+
+      <!-- Logo -->
+      <a href="#" class="navbar__logo">
+        <div class="navbar__logo-icon">ML</div>
+        <span class="navbar__logo-text">MercadoLibre</span>
+      </a>
+
+      <!-- Buscador — Dev 2 agrega la lógica en feature/product-search -->
+      <div class="navbar__search">
+        <input type="text" id="nav-search" placeholder="Buscar productos, marcas y más…" />
+        <button type="button" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="2.2"/>
+            <path d="M21 21l-4.35-4.35" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Links de navegación -->
+      <div class="navbar__links">
+        <a href="#">Categorías</a>
+        <a href="#">Ofertas</a>
+        <a href="#portafolio-devs">Equipo</a>
+        <a href="#" class="btn-login">Ingresar</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Sub-nav de categorías -->
+  <nav class="subnav" aria-label="Categorías">
+    <ul class="subnav__list">
+      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="#">Electrónica</a></li>
+      <li><a href="#">Ropa</a></li>
+      <li><a href="#">Hogar</a></li>
+      <li><a href="#">Deportes</a></li>
+      <li><a href="#">Automotriz</a></li>
+      <li><a href="#">Juguetes</a></li>
+      <li><a href="#">Libros</a></li>
+      <li><a href="#">Belleza</a></li>
+      <li><a href="#">Inmuebles</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================
+       CONTENIDO PRINCIPAL
+       ============================ -->
+  <main class="page-wrapper">
+
+    <!-- Placeholder buscador — Dev 2 reemplaza esto (feature/product-search) -->
+    <section id="buscador">
+  <div class="search-hero">
+    <div class="search-hero__inner">
+
+      <p class="search-hero__eyebrow">¡Todo lo que necesitas, aquí!</p>
+      <h1 class="search-hero__title">¿Qué estás buscando hoy?</h1>
+
+      <!-- Barra de búsqueda -->
+      <form class="search-bar" id="search-form" onsubmit="handleSearchForm(event)">
+        <div class="search-bar__wrap">
+          <span class="search-bar__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input
+            id="search-input"
+            class="search-bar__input"
+            type="text"
+            placeholder="Buscar productos, marcas y más…"
+            autocomplete="off"
+            oninput="handleSuggestions(this.value)"
+          />
+          <button class="search-bar__btn" type="submit">Buscar</button>
+        </div>
+
+        <!-- Lista de sugerencias dinámicas -->
+        <ul class="search-suggestions" id="suggestions" role="listbox" aria-label="Sugerencias"></ul>
+      </form>
+
+      <!-- Categorías rápidas -->
+      <div class="quick-cats">
+        <button class="quick-cat" onclick="fillSearch('Celulares')">📱 Celulares</button>
+        <button class="quick-cat" onclick="fillSearch('Laptops')">💻 Laptops</button>
+        <button class="quick-cat" onclick="fillSearch('Ropa')">👗 Ropa</button>
+        <button class="quick-cat" onclick="fillSearch('Zapatillas')">👟 Zapatillas</button>
+        <button class="quick-cat" onclick="fillSearch('Televisores')">📺 Televisores</button>
+        <button class="quick-cat" onclick="fillSearch('Gaming')">🎮 Gaming</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Feedback de búsqueda -->
+  <div class="search-result" id="search-result" style="display: none;"></div>
+</section>
+
+    <!-- Placeholder productos — Dev 3 reemplaza esto (feature/product-list) -->
+    <section id="productos">
+      <div class="section-placeholder">
+        🛍️ <strong>Productos Destacados</strong> — Dev 3 (feature/product-list)
+      </div>
+    </section>
+
+    <!-- Placeholder servicios — Dev 4 reemplaza esto (feature/ui-styles) -->
+    <section id="servicios">
+      <div class="section-placeholder">
+        ⚙️ <strong>Sección Servicios</strong> — Dev 4 (feature/ui-styles)
+      </div>
+    </section>
+
+    <!-- ============================
+         PORTAFOLIO DE DESARROLLADORES
+         Dev 1 crea la estructura base.
+         Cada dev agrega su tarjeta en
+         su rama feature/dev-portfolio-N
+         ============================ -->
+    <section id="portafolio-devs">
+      <h2 class="section-title">Nuestro Equipo de Desarrollo</h2>
+
+      <div class="portafolio-grid" id="dev-grid">
+
+        <!-- Tarjeta Dev 1 — rama: feature/dev-portfolio-1 -->
+        <article class="dev-card" style="animation-delay: .1s">
+          <div class="dev-card__header">
+            <div class="dev-card__avatar">👨‍💻</div>
+            <p class="dev-card__name">Dev 1 — Tu Nombre</p>
+            <p class="dev-card__role">Frontend Developer</p>
+          </div>
+          <div class="dev-card__body">
+            <p class="dev-card__desc">
+              Desarrollador apasionado por construir interfaces atractivas y funcionales.
+              Responsable de la estructura base y navegación del proyecto.
+            </p>
+
+            <p class="dev-card__services-title">Servicios</p>
+            <ul class="dev-card__services">
+              <li>Desarrollo de interfaces web</li>
+              <li>Diseño responsive</li>
+              <li>Integración de APIs</li>
+              <li>Optimización de rendimiento</li>
+            </ul>
+
+            <p class="dev-card__tech-title">Tecnologías</p>
+            <div class="dev-card__tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">GitHub</span>
+            </div>
+
+            <a href="https://github.com/tu-usuario" target="_blank" class="dev-card__github">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58
+                  0-.28-.01-1.03-.01-2.02-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76
+                  -1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99
+                  .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22
+                  -.14-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0
+                  2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24
+                  1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01
+                  2.9-.01 3.29 0 .32.21.7.82.58C20.57 22.3 24 17.8 24 12.5 24 5.87 18.63.5 12 .5z"/>
+              </svg>
+              Ver GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- Dev 2 pega su tarjeta aquí (feature/dev-portfolio-2) -->
+        <!-- Dev 3 pega su tarjeta aquí (feature/dev-portfolio-3) -->
+        <!-- Dev 4 pega su tarjeta aquí (feature/dev-portfolio-4) -->
+
+      </div><!-- /dev-grid -->
+    </section>
+
+  </main>
+
+  <!-- Footer placeholder — Dev 4 reemplaza esto (feature/ui-styles) -->
+  <footer id="footer">
+    <p>© 2025 MercadoLibre Clon · Taller Git Colaborativo · Dev 4 completa este footer</p>
+  </footer>
+
+  <!-- Dev 1 — main.js (rama: feature/navbar) -->
+  <script src="js/main.js"></script>
+
 </body>
 </html>
